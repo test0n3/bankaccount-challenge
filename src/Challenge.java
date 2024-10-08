@@ -12,10 +12,10 @@ public class Challenge {
         BankAccount bankAccount = new BankAccount();
         boolean activeSystem = true;
         while (activeSystem) {
-            System.out.println("Bienvenido a la Aplicación Bancaria\n-----------------------------------");
+            System.out.println("\nBienvenido a la Aplicación Bancaria\n-----------------------------------");
             System.out.println(menu);
             Scanner userInput = new Scanner(System.in);
-            System.out.println("Ingrese la opción adecuada:");
+            System.out.println("\nIngrese la opción adecuada:");
             String option = userInput.nextLine();
             double amount;
             switch (option) {
@@ -23,12 +23,12 @@ public class Challenge {
                     bankAccount.accountDetails();
                     break;
                 case "2":
-                    System.out.println("Cuál es el valor que desea retirar?");
+                    System.out.println("¿Cuál es el valor que desea retirar?");
                     amount = userInput.nextDouble();
                     bankAccount.withdrawal(amount);
                     break;
                 case "3":
-                    System.out.println("Cuál es el valor que desea depositar?");
+                    System.out.println("¿Cuál es el valor que desea depositar?");
                     amount = userInput.nextDouble();
                     bankAccount.deposit(amount);
                     break;
