@@ -4,24 +4,26 @@ public class BankAccount {
     private final String accountCurrency = "$";
     private Double availableBalance = 1599.99;
 
-    public void accountDetails() {
-        System.out.println("\nDetalle de cuenta\n------------------");
-        System.out.println("Nombre del cliente: " + name
-                            + "\nTipo de cuenta: " + accountType
-                            + "\nSaldo disponible: " + accountCurrency + availableBalance);
-    }
-
-    public void withdrawal(double amount) {
+    public String withdrawal(double amount) {
         if (amount <= availableBalance) {
-            availableBalance = availableBalance - amount;
-            System.out.println("\nSaldo restante: " + accountCurrency + availableBalance);
+            this.availableBalance -= amount;
+            return "\nSaldo restante: " + this.accountCurrency + this.availableBalance;
         } else {
-            System.out.println("\nSaldo insuficiente.");
+            return "\nSaldo insuficiente.";
         }
     }
 
-    public void deposit(double amount) {
-        availableBalance = availableBalance + amount;
-        System.out.println("\nSaldo disponible: " + accountCurrency + availableBalance);
+    public String deposit(double amount) {
+        this.availableBalance += amount;
+        return "\nSaldo disponible: " + this.accountCurrency + this.availableBalance;
+    }
+
+    @Override
+    public String toString() {
+        return "\nDetalle de cuenta" +
+                "\n-----------------" +
+                "\nNombre del cliente: " + this.name +
+                "\nTipo de cuenta: " + this.accountType +
+                "\nSaldo disponible: " + this.accountCurrency + this.availableBalance;
     }
 }

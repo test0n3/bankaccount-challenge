@@ -1,36 +1,30 @@
 import java.util.Scanner;
 
 public class Challenge {
-    public final static String menu = """
-            Menu
-            ----
-            1. Consultar saldo.
-            2. Retirar
-            3. Depositar
-            9. Salir""";
     public static void main(String[] args) {
         BankAccount bankAccount = new BankAccount();
         boolean activeSystem = true;
+        Scanner userInput = new Scanner(System.in);
         while (activeSystem) {
-            System.out.println("\nBienvenido a la Aplicación Bancaria\n-----------------------------------");
-            System.out.println(menu);
-            Scanner userInput = new Scanner(System.in);
-            System.out.println("\nIngrese la opción adecuada:");
+            System.out.println(MenuData.mainMenu());
+            System.out.print("\nIngrese la opción adecuada: ");
             String option = userInput.nextLine();
             double amount;
             switch (option) {
                 case "1":
-                    bankAccount.accountDetails();
+                    System.out.println(bankAccount);
                     break;
                 case "2":
-                    System.out.println("¿Cuál es el valor que desea retirar?");
+                    System.out.print("\n¿Cuál es el valor que desea retirar? ");
                     amount = userInput.nextDouble();
-                    bankAccount.withdrawal(amount);
+                    userInput.nextLine();
+                    System.out.println(bankAccount.withdrawal(amount));
                     break;
                 case "3":
-                    System.out.println("¿Cuál es el valor que desea depositar?");
+                    System.out.print("\n¿Cuál es el valor que desea depositar? ");
                     amount = userInput.nextDouble();
-                    bankAccount.deposit(amount);
+                    userInput.nextLine();
+                    System.out.println(bankAccount.deposit(amount));
                     break;
                 case "9":
                     activeSystem = false;
@@ -39,5 +33,6 @@ public class Challenge {
                     throw new IllegalStateException("Unexpected value: " + option);
             }
         }
+        userInput.close();
     }
 }
